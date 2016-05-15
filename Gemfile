@@ -47,4 +47,10 @@ group :development do
   # For a better debug according to Le Wagon
   gem "better_errors"
   gem "binding_of_caller"
+
+  # For the front-end
+  gem 'bootstrap-sass', '~> 3.3.1'
+  gem 'font-awesome-sass', '~> 4.2.0'
+  gem 'simple_form'
+  gem "autoprefixer-rails"
 end
