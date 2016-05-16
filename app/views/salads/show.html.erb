@@ -8,19 +8,14 @@
         <% end %>
       </ul>
       <br>
-      <% if @quantity.errors.any? %>
-        <ul>
-          <% @quantity.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+
       <%= simple_form_for([@salad, @quantity]) do |f| %>
         <%= f.input :description %>
         <%= f.input :ingredient_id, collection: @ingredients %>
         <%= f.submit class: "btn btn-primary" %>
       <% end %>
-      <%= link_to "Retour à l'accueil", salads_path %>
+
+      <p><%= link_to "Retour à l'accueil", salads_path %></p>
     </div>
   </div>
 </div>

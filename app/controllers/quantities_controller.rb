@@ -1,6 +1,7 @@
 class QuantitiesController < ApplicationController
   before_action :set_quantity, only: [:show, :edit, :update, :destroy]
   before_action :load_ingredients, only: [:edit, :new]
+  before_action :load_salad, only: [:edit, :new, :create, :destroy]
   def index
     @quantities = Quantity.all
   end
@@ -10,12 +11,13 @@ class QuantitiesController < ApplicationController
 
   def new
     @quantity = Quantity.new
+    @quantity.salad_id = @salad.id
   end
 
   def create
     @quantity = Quantity.new(quantity_params)
     @quantity.save
-    redirect_to quantity_path(@quantity)
+    redirect_to salad_path(@salad)
   end
 
   def edit
@@ -23,12 +25,12 @@ class QuantitiesController < ApplicationController
 
   def update
     @quantity.update(quantity_params)
-    redirect_to quantity_path(@quantity)
+    redirect_to salad_path(@salad)
   end
 
   def destroy
     @quantity.destroy
-    redirect_to quantities_path
+    redirect_to salad_path(@salad)
   end
 
   private
@@ -43,5 +45,9 @@ class QuantitiesController < ApplicationController
 
   def load_ingredients
     @ingredients = Ingredient.all
+  end
+
+  def load_salad
+    @salad = Salad.find(params[:salad_id])
   end
 end

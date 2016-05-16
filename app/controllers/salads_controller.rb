@@ -5,6 +5,7 @@ class SaladsController < ApplicationController
   end
 
   def show
+    @quantity = Quantity.new
   end
 
   def new

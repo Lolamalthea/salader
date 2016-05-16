@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'salads#index'
 
-  resources :salads
-  resources :quantities
+  resources :salads do
+    resources :quantities, only: [:create]
+  end
+
+# resources :quantities
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
